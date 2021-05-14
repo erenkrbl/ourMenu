@@ -78,10 +78,18 @@ const menu = [{
     img: "./images/item-10.jpeg",
     desc: `skateboard fam synth authentic semiotics. Live-edge lyft af, edison bulb yuccie crucifix microdosing.`,
 },
+{
+    id: 11,
+    title: "Full Stack",
+    category: "Clarusway",
+    price: 22.99,
+    img: "./images/item-10.jpeg",
+    desc: `We are the best.`,
+},
 ];
 
 window.addEventListener("DOMContentLoaded", function(){
-    displayMenuItems();
+    displayMenuItems(menu);
     displayCategoryItems ();
 });
 
@@ -97,9 +105,9 @@ window.addEventListener("DOMContentLoaded", function(){
 const sectionElement = document.querySelector(".section-center");
 const catgoryElement = document.querySelector(".btn-container");
 
-function displayMenuItems(){
+function displayMenuItems(menuList){
     let sectionContent = "";
-    menu.forEach((item) => {
+    menuList.forEach((item) => {
         sectionContent += 
         `<article class="menu-item">
             <div class="item-info">
@@ -141,12 +149,20 @@ function displayCategoryItems () {
     filterButtons.forEach((button) => {
         button.addEventListener("click", function(e) {
             //console.log(e.target.getAttribute("data-id"));
-
+            const selectedCategoryName = e.target.getAttribute("data-id");
             const filterMenu = menu.filter(
-                (item) => item.category === e.target.getAttribute("data-id")
-            ); 
-            console.log(filterMenu)
+                (item) => item.category === selectedCategoryName
+            );
+            console.log("selectedCategoryName: " + selectedCategoryName);
+            if(selectedCategoryName == 'all') {
+                displayMenuItems(menu);
+            } else {
+                displayMenuItems(filterMenu);
+            } 
         });
     });
     //filterButtons.addEventListener("click", )
 }
+
+// Todo 
+// image dosyası eklenecek
