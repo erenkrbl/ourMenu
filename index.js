@@ -80,4 +80,37 @@ const menu = [{
 },
 ];
 
-window.addEventListener("DOMContentLoaded")
+window.addEventListener("DOMContentLoaded", function(){
+    displayMenuItems();
+});
+
+
+
+// id: 1,
+// title: "buttermilk pancakes",
+// category: "breakfast",
+// price: 15.99,
+// img: "./images/item-1.jpeg",
+// desc: `I'm baby w
+
+const sectionElement = document.querySelector(".section-center");
+
+function displayMenuItems(){
+    let sectionContent = "";
+    menu.forEach((item) => {
+        sectionContent += 
+        `<article class="menu-item">
+            <div class="item-info">
+                <header>
+                    <h4>${item.title}</h4>
+                    <h4 class="price">${item.price}</h4>
+                </header>
+                <p class="item-text">
+                    ${item.desc}
+                </p>
+            </div>
+        </article>`; 
+    });
+    sectionElement.innerHTML = sectionContent;
+    //console.log(sectionContent);
+}
