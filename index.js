@@ -134,4 +134,19 @@ function displayCategoryItems () {
         //console.log(categories);
     });
     catgoryElement.innerHTML = categoryContent;
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    console.log(filterButtons);
+
+    filterButtons.forEach((button) => {
+        button.addEventListener("click", function(e) {
+            //console.log(e.target.getAttribute("data-id"));
+
+            const filterMenu = menu.filter(
+                (item) => item.category === e.target.getAttribute("data-id")
+            ); 
+            console.log(filterMenu)
+        });
+    });
+    //filterButtons.addEventListener("click", )
 }
