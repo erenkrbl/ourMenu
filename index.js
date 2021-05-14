@@ -82,6 +82,7 @@ const menu = [{
 
 window.addEventListener("DOMContentLoaded", function(){
     displayMenuItems();
+    displayCategoryItems ();
 });
 
 
@@ -94,6 +95,7 @@ window.addEventListener("DOMContentLoaded", function(){
 // desc: `I'm baby w
 
 const sectionElement = document.querySelector(".section-center");
+const catgoryElement = document.querySelector(".btn-container");
 
 function displayMenuItems(){
     let sectionContent = "";
@@ -113,4 +115,23 @@ function displayMenuItems(){
     });
     sectionElement.innerHTML = sectionContent;
     //console.log(sectionContent);
+}
+
+function displayCategoryItems () {
+    let categories = [];
+    let categoryContent = `<button type="button" class="filter-btn" data-id="all">all</button>`;
+    menu.forEach((item) =>{ 
+        const foodIndex = categories.indexOf(item.category); 
+        if(foodIndex === -1) {
+            categories.push(item.category);
+        }
+    });
+
+    categories.forEach((categories) =>{
+        categoryContent += `
+        <button type="button" class="filter-btn" data-id="${categories}">${categories}</button>
+        `
+        //console.log(categories);
+    });
+    catgoryElement.innerHTML = categoryContent;
 }
